@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D15F7A001A9675230016460A /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E84B6E1A9570F50040E36F /* Cartography.framework */; };
+		D15F7A011A9675230016460A /* Cartography.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1E84B6E1A9570F50040E36F /* Cartography.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D1E84B4E1A9566E90040E36F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E84B4D1A9566E90040E36F /* AppDelegate.swift */; };
 		D1E84B501A9566E90040E36F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E84B4F1A9566E90040E36F /* ViewController.swift */; };
 		D1E84B551A9566E90040E36F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E84B541A9566E90040E36F /* Images.xcassets */; };
 		D1E84B581A9566E90040E36F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E84B561A9566E90040E36F /* LaunchScreen.xib */; };
 		D1E84B641A9566E90040E36F /* CartCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E84B631A9566E90040E36F /* CartCalculatorTests.swift */; };
-		D1E84B6F1A9570F50040E36F /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E84B6E1A9570F50040E36F /* Cartography.framework */; };
 		D1E84B701A9570F50040E36F /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E84B6E1A9570F50040E36F /* Cartography.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,20 @@
 			remoteInfo = CartCalculator;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D15F7A021A9675230016460A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D15F7A011A9675230016460A /* Cartography.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D1E84B481A9566E90040E36F /* CartCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CartCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1E84B6F1A9570F50040E36F /* Cartography.framework in Frameworks */,
+				D15F7A001A9675230016460A /* Cartography.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +148,7 @@
 				D1E84B441A9566E90040E36F /* Sources */,
 				D1E84B451A9566E90040E36F /* Frameworks */,
 				D1E84B461A9566E90040E36F /* Resources */,
+				D15F7A021A9675230016460A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -342,10 +358,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CartCalculator",
+					"$(PROJECT_DIR)/**",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Dependencies/**",
 				);
 				INFOPLIST_FILE = CartCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Dependencies/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -356,10 +378,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CartCalculator",
+					"$(PROJECT_DIR)/**",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Dependencies/**",
 				);
 				INFOPLIST_FILE = CartCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Dependencies/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

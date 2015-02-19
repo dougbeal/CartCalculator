@@ -40,22 +40,27 @@ class ViewController: UIViewController {
     func createViews() {
         excludeStatusBarView = UIView(frame: UIScreen.mainScreen().applicationFrame)
         excludeStatusBarView!.accessibilityIdentifier = "exclude status bar view"
+        excludeStatusBarView!.backgroundColor = UIColor.purpleColor()
+        view.addSubview(excludeStatusBarView!)        
         layoutElements["view"] = view
         layoutElements["excludeStatusBarView"] = excludeStatusBarView
         
         var display = UILabel()
         layoutElements["display"] = display
+        display.text = "0"
         var history = UILabel()
         layoutElements["history"] = history
-        for digit in 0...9 {
-            var button = UIButton()
-            layoutElements["button\(digit)"] = button
-            button.setTitle("\(digit)", forState:UIControlState.Normal)
-        }
-        for symbol in [ [Int](0...9), ".", "π", "+", "-", "x", "/", "cos", "sin" ] {
+        // for digit in 0...9 {
+        //     var button = UIButton()
+        //     layoutElements["button\(digit)"] = button
+        //     button.setTitle("\(digit)", forState:UIControlState.Normal)
+        // }
+        var symbols = ([Int](0...9)).map { String($0) } + [ ".", "π", "+", "-", "x", "/", "cos", "sin" ] 
+        for symbol in symbols {
             var button = UIButton()            
-            layoutElements["button\(symbol)"] = button 
+            layoutElements["button_\(symbol)"] = button 
                                                     button.setTitle("\(symbol)", forState:UIControlState.Normal)
+                                                    excludeStatusBarView!.addSubview(button)                                                    
            }
         
         var enter = UIButton()
@@ -63,12 +68,18 @@ class ViewController: UIViewController {
         var backspace = UIButton()
         layoutElements["button<bks>"] = backspace
         		            									
-    
-        view.addSubview(excludeStatusBarView!)
+        excludeStatusBarView!.addSubview(enter)
+        excludeStatusBarView!.addSubview(backspace)
+
+
         layout(layoutElements) { le in
             println("\(le)")
-            //le["display"].top = le["excludeStatusBarView"].top
-            
+            println("\(le)")
+            var display = le["display"]!
+            println("\(display)")
+            le["display"]!.top == le["excludeStatusBarView"]!.top
+            le["display"]!.left == le["excludeStatusBarView"]!.left
+            le["display"]!.right == le["excludeStatusBarView"]!.right            
         }
     }
 
