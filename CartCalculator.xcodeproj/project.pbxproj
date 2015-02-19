@@ -13,6 +13,8 @@
 		D1E84B551A9566E90040E36F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E84B541A9566E90040E36F /* Images.xcassets */; };
 		D1E84B581A9566E90040E36F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E84B561A9566E90040E36F /* LaunchScreen.xib */; };
 		D1E84B641A9566E90040E36F /* CartCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E84B631A9566E90040E36F /* CartCalculatorTests.swift */; };
+		D1E84B6F1A9570F50040E36F /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E84B6E1A9570F50040E36F /* Cartography.framework */; };
+		D1E84B701A9570F50040E36F /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E84B6E1A9570F50040E36F /* Cartography.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 		D1E84B5D1A9566E90040E36F /* CartCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E84B621A9566E90040E36F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1E84B631A9566E90040E36F /* CartCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCalculatorTests.swift; sourceTree = "<group>"; };
+		D1E84B6E1A9570F50040E36F /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Cartography.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E84B6F1A9570F50040E36F /* Cartography.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E84B701A9570F50040E36F /* Cartography.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +82,7 @@
 		D1E84B4A1A9566E90040E36F /* CartCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				D1E84B6D1A9570DD0040E36F /* Framework */,
 				D1E84B4D1A9566E90040E36F /* AppDelegate.swift */,
 				D1E84B4F1A9566E90040E36F /* ViewController.swift */,
 				D1E84B511A9566E90040E36F /* Main.storyboard */,
@@ -110,6 +116,14 @@
 				D1E84B621A9566E90040E36F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D1E84B6D1A9570DD0040E36F /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				D1E84B6E1A9570F50040E36F /* Cartography.framework */,
+			);
+			name = Framework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +352,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CartCalculator",
+				);
 				INFOPLIST_FILE = CartCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,6 +366,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CartCalculator",
+				);
 				INFOPLIST_FILE = CartCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -361,6 +383,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/CartCalculator",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -380,6 +403,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/CartCalculator",
 				);
 				INFOPLIST_FILE = CartCalculatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -407,6 +431,7 @@
 				D1E84B691A9566E90040E36F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D1E84B6A1A9566E90040E36F /* Build configuration list for PBXNativeTarget "CartCalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +440,7 @@
 				D1E84B6C1A9566E90040E36F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
