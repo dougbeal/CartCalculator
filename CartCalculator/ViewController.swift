@@ -43,9 +43,26 @@ class ViewController: UIViewController {
         layoutElements["view"] = view
         layoutElements["excludeStatusBarView"] = excludeStatusBarView
         
+        var display = layoutElements["display"] = UILabel()
+        var history = layoutElements["history"] = UILabel()
+        for digit in 0...9 {
+            var button = layoutElements["button\(digit)"] = UIButton()
+            button.accesibilityIdentifier = "\(digit)"
+        }
+        for symbol in [ 0...9, ".", "π", "+", "-", "x", "/", "cos", "sin" ] {
+            var button = layoutElements["button\(symbol)"]
+            button.text = button.accesibilityIdentifier = "\(symbol)"
+           }
+        
+        var enter = layoutElements["button<ent>"] = UIButton()                
+        var backspace = layoutElements["button<bks>"] = UIButton()                
+        		            									
+    
         view.addSubview(excludeStatusBarView!)
         layout(layoutElements) { (le: [String: UIView]) in
-                                 println("\(le)")
+            println("\(le)")
+            le["display"].top = le["excludeStatusBarView"].top
+            
         }
     }
 
