@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F06DB198-1128-4FF4-97D6-C4D142B6485F"
+               BlueprintIdentifier = "D1E84B471A9566E90040E36F"
                BuildableName = "CartCalculator.app"
                BlueprintName = "CartCalculator"
                ReferencedContainer = "container:CartCalculator.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F06DB198-1128-4FF4-97D6-C4D142B6485F"
+            BlueprintIdentifier = "D1E84B471A9566E90040E36F"
             BuildableName = "CartCalculator.app"
             BlueprintName = "CartCalculator"
             ReferencedContainer = "container:CartCalculator.xcodeproj">
@@ -51,7 +51,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F06DB198-1128-4FF4-97D6-C4D142B6485F"
+            BlueprintIdentifier = "D1E84B471A9566E90040E36F"
             BuildableName = "CartCalculator.app"
             BlueprintName = "CartCalculator"
             ReferencedContainer = "container:CartCalculator.xcodeproj">
@@ -69,7 +69,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F06DB198-1128-4FF4-97D6-C4D142B6485F"
+            BlueprintIdentifier = "D1E84B471A9566E90040E36F"
             BuildableName = "CartCalculator.app"
             BlueprintName = "CartCalculator"
             ReferencedContainer = "container:CartCalculator.xcodeproj">
