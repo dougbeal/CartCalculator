@@ -9,10 +9,12 @@
 import UIKit
 import Cartography
 
+
 class ViewController: UIViewController {
 
     var excludeStatusBarView: UIView?
-    var layoutElements: [String: View]
+    var layoutElements = Dictionary<String, UIView>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -42,7 +44,7 @@ class ViewController: UIViewController {
         layoutElements["excludeStatusBarView"] = excludeStatusBarView
         
         view.addSubview(excludeStatusBarView!)
-        layout(layoutElements) { (le: [String: View]) in
+        layout(layoutElements) { (le: [String: UIView]) in
                                  println("\(le)")
         }
     }
