@@ -64,9 +64,9 @@ class ViewController: UIViewController {
            }
         
         var enter = UIButton()
-        layoutElements["button<ent>"] = enter
+        layoutElements["button_<ent>"] = enter
         var backspace = UIButton()
-        layoutElements["button<bks>"] = backspace
+        layoutElements["button_<bks>"] = backspace
         		            									
         excludeStatusBarView!.addSubview(enter)
         excludeStatusBarView!.addSubview(backspace)
@@ -74,12 +74,20 @@ class ViewController: UIViewController {
 
         layout(layoutElements) { le in
             println("\(le)")
-            println("\(le)")
+            
             var display = le["display"]!
             println("\(display)")
             le["display"]!.top == le["excludeStatusBarView"]!.top
             le["display"]!.left == le["excludeStatusBarView"]!.left
             le["display"]!.right == le["excludeStatusBarView"]!.right            
+            var grid = [ 
+                ["", "cos", "sin", "/"],
+                ["7", "8", "9", "x"],
+                ["4", "5", "6", "-"],
+                ["1", "2", "3", "+"],
+                ["" , "0", "."]
+                ]
+            	
         }
     }
 
