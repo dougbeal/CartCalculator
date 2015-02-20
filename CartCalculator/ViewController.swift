@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         keypadView.backgroundColor = UIColor.grayColor()
         excludeStatusBarView!.addSubview(keypadView)
 
-        var symbols = ([Int](0...9)).map { String($0) } + [ ".", "π", "+", "-", "x", "/", "cos", "sin", " " ] 
+        var symbols = ([Int](0...9)).map { String($0) } + [ ".", "π", "+", "-", "x", "/", "cos", "sin", "\u{03C0}" ] 
         for symbol in symbols {
             var button = UIButton()            
             layoutElements["button_\(symbol)"] = button 
@@ -82,12 +82,12 @@ class ViewController: UIViewController {
         enter.setTitle("\u{23CE}", forState: UIControlState.Normal)
         var backspace = UIButton()
         layoutElements["button_<bks>"] = backspace
-        backspace.setTitle("\u{0008}", forState: UIControlState.Normal)
+        backspace.setTitle("\u{2408}", forState: UIControlState.Normal)
 
 
-        excludeStatusBarView!.addSubview(enter)
+        keypadView.addSubview(enter)
         
-        excludeStatusBarView!.addSubview(backspace)
+        keypadView.addSubview(backspace)
 
 
         
@@ -104,6 +104,7 @@ class ViewController: UIViewController {
             history.top == view.top
             display.top == history.bottom
             keypadView.top == display.bottom
+            keypadView.bottom == view.bottom
 
             for thing in [history, display, keypadView] {
                 thing.left == view.leftMargin
@@ -114,10 +115,21 @@ class ViewController: UIViewController {
                 ["7", "8", "9", "x"],
                 ["4", "5", "6", "-"],
                 ["1", "2", "3", "+"],
-                [" " , "0", ".", "<ent>"]
+                ["\u{03C0}" , "0", ".", "<ent>"]
             ]
             let buttonGrid = grid.map { $0.map { le["button_\($0)"]! } }
-                                        
+
+                                 for button in buttonGrid.first! {
+                                     button.top == keypadView.topMargin
+                                 }
+                                 var prev = buttonGrid.first!.first!
+                                 for row in buttonGrid[1..<buttonGrid.count] {
+                                     for button in row {
+                                         button.top == prev.bottom
+                                     }
+                                     prev = row.first!
+                                         
+                                 }
             for row in buttonGrid {
                 align(top: row)
                 row.first!.left == view.leftMargin
