@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F44CA378-BF35-48A1-8BBC-AB25FE059ACE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CartCalculator</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>364D2E5F611143E7C4D0A99C691B1988FBD5381F</key>
+		<string>https://github.com/dougbeal/Cartography</string>
+		<key>A0C776BD576C8088C3F710B122AA9D3F99565841</key>
+		<string>https://github.com/dougbeal/CartCalculator.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CartCalculator.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>364D2E5F611143E7C4D0A99C691B1988FBD5381F</key>
+		<string>..Dependencies/Cartography</string>
+		<key>A0C776BD576C8088C3F710B122AA9D3F99565841</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/dougbeal/CartCalculator.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>A0C776BD576C8088C3F710B122AA9D3F99565841</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A0C776BD576C8088C3F710B122AA9D3F99565841</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CartCalculator</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>364D2E5F611143E7C4D0A99C691B1988FBD5381F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Cartography</string>
+		</dict>
+	</array>
+</dict>
+</plist>

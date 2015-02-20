@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        view.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 1, alpha: 1.0)        
         createViews()
     }
 
@@ -48,46 +49,87 @@ class ViewController: UIViewController {
         var display = UILabel()
         layoutElements["display"] = display
         display.text = "0"
+        display.textAlignment = NSTextAlignment.Right
+        display.accessibilityIdentifier = "display"
+
+        
         var history = UILabel()
         layoutElements["history"] = history
-        // for digit in 0...9 {
-        //     var button = UIButton()
-        //     layoutElements["button\(digit)"] = button
-        //     button.setTitle("\(digit)", forState:UIControlState.Normal)
-        // }
-        var symbols = ([Int](0...9)).map { String($0) } + [ ".", "π", "+", "-", "x", "/", "cos", "sin" ] 
+        history.text = "history"
+        history.textAlignment = NSTextAlignment.Right
+        history.accessibilityIdentifier = "history"
+        
+        
+        excludeStatusBarView!.addSubview(display)
+        excludeStatusBarView!.addSubview(history)
+        
+        var keypadView = UIView()
+        layoutElements["keypadView"] = keypadView
+        keypadView.accessibilityIdentifier = "exclude status bar view"
+        keypadView.backgroundColor = UIColor.grayColor()
+        excludeStatusBarView!.addSubview(keypadView)
+
+        var symbols = ([Int](0...9)).map { String($0) } + [ ".", "π", "+", "-", "x", "/", "cos", "sin", " " ] 
         for symbol in symbols {
             var button = UIButton()            
             layoutElements["button_\(symbol)"] = button 
-                                                    button.setTitle("\(symbol)", forState:UIControlState.Normal)
-                                                    excludeStatusBarView!.addSubview(button)                                                    
+                                                     button.setTitle("\(symbol)", forState:UIControlState.Normal)
+                                                    keypadView.addSubview(button)                                                    
            }
         
         var enter = UIButton()
         layoutElements["button_<ent>"] = enter
+        enter.setTitle("\u{23CE}", forState: UIControlState.Normal)
         var backspace = UIButton()
         layoutElements["button_<bks>"] = backspace
-        		            									
+        backspace.setTitle("\u{0008}", forState: UIControlState.Normal)
+
+
         excludeStatusBarView!.addSubview(enter)
+        
         excludeStatusBarView!.addSubview(backspace)
 
+
+        
 
         layout(layoutElements) { le in
             println("\(le)")
             
-            var display = le["display"]!
+            let display = le["display"]!
+            let history = le["history"]!            
+            let view = le["excludeStatusBarView"]!
+            let keypadView = le["keypadView"]!
             println("\(display)")
-            le["display"]!.top == le["excludeStatusBarView"]!.top
-            le["display"]!.left == le["excludeStatusBarView"]!.left
-            le["display"]!.right == le["excludeStatusBarView"]!.right            
-            var grid = [ 
-                ["", "cos", "sin", "/"],
+
+            history.top == view.top
+            display.top == history.bottom
+            keypadView.top == display.bottom
+
+            for thing in [history, display, keypadView] {
+                thing.left == view.leftMargin
+                thing.right == view.rightMargin
+            }
+            let grid = [ 
+                ["<bks>", "cos", "sin", "/"],
                 ["7", "8", "9", "x"],
                 ["4", "5", "6", "-"],
                 ["1", "2", "3", "+"],
-                ["" , "0", "."]
-                ]
-            	
+                [" " , "0", ".", "<ent>"]
+            ]
+            let buttonGrid = grid.map { $0.map { le["button_\($0)"]! } }
+                                        
+            for row in buttonGrid {
+                align(top: row)
+                row.first!.left == view.leftMargin
+                row.last!.right == view.rightMargin
+                var prev = row.first!
+                for button in row[1..<row.count-1] {
+                    prev.right == button.left
+                    prev = button
+                }
+                prev.right == row.last!.left
+            }
+                    
         }
     }
 
