@@ -41,7 +41,7 @@ class ViewController: UIViewController {
     func createViews() {
         excludeStatusBarView = UIView(frame: UIScreen.mainScreen().applicationFrame)
         excludeStatusBarView!.accessibilityIdentifier = "exclude status bar view"
-        excludeStatusBarView!.backgroundColor = UIColor.purpleColor()
+        excludeStatusBarView!.backgroundColor = UIColor.grayColor()
         view.addSubview(excludeStatusBarView!)        
         layoutElements["view"] = view
         layoutElements["excludeStatusBarView"] = excludeStatusBarView
