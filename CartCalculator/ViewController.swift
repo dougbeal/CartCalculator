@@ -118,7 +118,6 @@ class ViewController: UIViewController {
                 ["\u{03C0}" , "0", ".", "<ent>"]
             ]
             let buttonGrid = grid.map { $0.map { le["button_\($0)"]! } }
-
                                  for button in buttonGrid.first! {
                                      button.top == keypadView.topMargin
                                  }
