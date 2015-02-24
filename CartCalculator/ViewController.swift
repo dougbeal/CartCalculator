@@ -65,24 +65,38 @@ class ViewController: UIViewController {
         
         var keypadView = UIView()
         layoutElements["keypadView"] = keypadView
-        keypadView.accessibilityIdentifier = "exclude status bar view"
-        keypadView.backgroundColor = UIColor.grayColor()
+        keypadView.accessibilityIdentifier = "keypadView"
+        keypadView.backgroundColor = UIColor.blueColor()
         excludeStatusBarView!.addSubview(keypadView)
 
-        var symbols = ([Int](0...9)).map { String($0) } + [ ".", "π", "+", "-", "x", "/", "cos", "sin", "\u{03C0}" ] 
+        let grid = [ 
+        ["<bks>", "cos", "sin", "/"],
+        ["7", "8", "9", "x"],
+        ["4", "5", "6", "-"],
+        ["1", "2", "3", "+"],
+        ["\u{03C0}" , "0", ".", "<ent>"]
+        ]
+        // ([Int](0...9)).map { String($0) } + [ ".", "π", "+", "-", "x", "/", "cos", "sin", "\u{03C0}" ] 
+        let symbols = grid.reduce([], +)
         for symbol in symbols {
             var button = UIButton()            
             layoutElements["button_\(symbol)"] = button 
-                                                     button.setTitle("\(symbol)", forState:UIControlState.Normal)
-                                                    keypadView.addSubview(button)                                                    
-           }
+            button.setTitle("\(symbol)", forState:UIControlState.Normal)
+            button.titleLabel!.textAlignment=NSTextAlignment.Center
+            button.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
+            keypadView.addSubview(button)
+            
+        }
+        
         
         var enter = UIButton()
         layoutElements["button_<ent>"] = enter
         enter.setTitle("\u{23CE}", forState: UIControlState.Normal)
+        enter.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
         var backspace = UIButton()
         layoutElements["button_<bks>"] = backspace
-        backspace.setTitle("\u{2408}", forState: UIControlState.Normal)
+        backspace.setTitle("\u{232B}", forState: UIControlState.Normal)
+        backspace.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
 
 
         keypadView.addSubview(enter)
@@ -93,55 +107,55 @@ class ViewController: UIViewController {
         
 
         layout(layoutElements) { le in
-            println("\(le)")
-            
             let display = le["display"]!
             let history = le["history"]!            
-            let view = le["excludeStatusBarView"]!
+            let noStatusBar = le["excludeStatusBarView"]!
             let keypadView = le["keypadView"]!
-            println("\(display)")
-
-            history.top == view.top
+            let buttonGrid = grid.map { $0.map { le["button_\($0)"]! } }
+                                 let buttonSpacing = 4.0
+                                 
+            history.top == noStatusBar.top
             display.top == history.bottom
             keypadView.top == display.bottom
-            keypadView.bottom == view.bottom
+            keypadView.bottom == noStatusBar.bottomMargin 
+            keypadView.bottom >= buttonGrid.last!.last!.bottom + 8 ~ 500
+
 
             for thing in [history, display, keypadView] {
-                thing.left == view.leftMargin
-                thing.right == view.rightMargin
+                thing.left == noStatusBar.leftMargin
+                thing.right == noStatusBar.rightMargin
             }
-            let grid = [ 
-                ["<bks>", "cos", "sin", "/"],
-                ["7", "8", "9", "x"],
-                ["4", "5", "6", "-"],
-                ["1", "2", "3", "+"],
-                ["\u{03C0}" , "0", ".", "<ent>"]
-            ]
-            let buttonGrid = grid.map { $0.map { le["button_\($0)"]! } }
-                                 for button in buttonGrid.first! {
-                                     button.top == keypadView.topMargin
-                                 }
-                                 var prev = buttonGrid.first!.first!
-                                 for row in buttonGrid[1..<buttonGrid.count] {
-                                     for button in row {
-                                         button.top == prev.bottom
-                                     }
-                                     prev = row.first!
-                                         
-                                 }
+
+
+            for button in buttonGrid.first! {
+                button.top == keypadView.topMargin
+            }
+            var prev = buttonGrid.first!.first!
+            for row in buttonGrid[1..<buttonGrid.count] {
+                for button in row {
+                    button.top == prev.bottom + buttonSpacing
+                }
+                prev = row.first!
+            }
+            
             for row in buttonGrid {
                 align(top: row)
-                row.first!.left == view.leftMargin
-                row.last!.right == view.rightMargin
+                row.first!.left >= noStatusBar.leftMargin
+                row.last!.right <= noStatusBar.rightMargin
                 var prev = row.first!
                 for button in row[1..<row.count-1] {
-                    prev.right == button.left
+                    prev.right == button.left + buttonSpacing
                     prev = button
                 }
-                prev.right == row.last!.left
+                prev.right == row.last!.left + buttonSpacing
             }
+
                     
         }
+    }
+
+    func buttonPressed(send: UIButton) {
+        println("button pressed = \(send.currentTitle!)")
     }
 
 }
