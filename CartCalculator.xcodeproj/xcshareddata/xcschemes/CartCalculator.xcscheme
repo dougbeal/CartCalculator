@@ -28,6 +28,26 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D1E84B5C1A9566E90040E36F"
+               BuildableName = "CartCalculatorTests.xctest"
+               BlueprintName = "CartCalculatorTests"
+               ReferencedContainer = "container:CartCalculator.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "54C96A1B195063CD000CDD27"
+               BuildableName = "Cartography-iOS-Tests.xctest"
+               BlueprintName = "Cartography-iOS-Tests"
+               ReferencedContainer = "container:Dependencies/Cartography/Cartography.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
